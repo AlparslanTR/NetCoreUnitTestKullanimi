@@ -10,7 +10,7 @@ namespace UnitTest.Test
 {
     public class CalculatorTest
     {
-        [Fact]
+        [Fact] // Methodumuz eğer hiç parametre almıyorsa Fact Attribütü kullanmak zorunda.
         public void AddTest()
         {
             // Arrange -- Değişkenleri Verdiğimiz Yerdir.
@@ -56,6 +56,15 @@ namespace UnitTest.Test
             /*  ////////////////////////////  */
 
 
+        }
+
+        [Theory] // Methotta istenilen değerleri inline olarak giriyoruz bu attribute sayesinde.
+        [InlineData(2,10,12)]
+        public void AddTest2(int a,int b,int total)
+        {
+            var calculator = new Calculator();
+            var actualTotal = calculator.Add(a, b);
+            Assert.Equal(total, actualTotal);
         }
     }
 }
