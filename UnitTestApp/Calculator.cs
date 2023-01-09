@@ -8,9 +8,15 @@ namespace UnitTestApp
 {
     public class Calculator
     {
+        private ICalculatorService _calculatorService { get; set; } 
+        public Calculator(ICalculatorService calculatorService) 
+        {
+            _calculatorService= calculatorService;
+        }
+
         public int Add(int a, int b)
         {
-            return a + b;
+            return _calculatorService.add(a, b);
         }
     }
 }

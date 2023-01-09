@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,7 +63,8 @@ namespace UnitTest.Test
         [InlineData(2,10,12)]
         public void AddTest2(int a,int b,int total)
         {
-            var calculator = new Calculator();
+            var myMock= new Mock<ICalculatorService>();
+            myMock.Setup(x=>x.add(a,b)).Returns(total);  
             var actualTotal = calculator.Add(a, b);
             Assert.Equal(total, actualTotal);
         }
